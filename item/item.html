@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="/item/item.css">
+
+<div class="container">
+
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<img class="img img-responsive item-img imagedropshadow center-block" src="{{vm.item.image}}" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<h1>{{vm.item.title}} <b class="text-light">|</b> <small> {{vm.item.description}}</small></h1>
+			
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<h2>
+				<span class="pull-left">Owner</span>
+				<span class="pull-right"><a data-ng-href="#!/user/{{vm.item.ownerUser}}">{{vm.item.ownerUser}}</a></span>
+			</h2>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<h2>
+				<span class="pull-left">Condition</span>
+				<span class="pull-right fa fa-star fa-1x" data-ng-repeat="i in vm.range(vm.maxStars) track by $index" data-ng-class="vm.maxStars - vm.item.condition < $index+1 ? 'filled' : ''"></span>
+			</h2>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<h2>
+				<span class="pull-left">Status</span>
+				<span class="pull-right" data-ng-class="vm.item.available ? 'text-success' : 'text-danger'">{{vm.item.available ? 'Available' : 'Unavailable'}}</span>
+			</h2>
+		</div>
+	</div>
+	
+	<hr>
+	
+	<div class="row" data-ng-show="vm.loggedIn && vm.loggedInUsername !== vm.item.ownerUser">
+		<div class="col-md-8 col-md-offset-2">
+			<button data-ng-click="vm.borrowItem()" class="btn btn-block btn-success btn-lg" data-ng-class="vm.disableButton ? 'disabled' : '' ">{{vm.itemRequested ? 'Request Sent!' : vm.requesting ? 'Sending Request ' : 'Borrow This!'}}<i data-ng-show="vm.requesting" class="fa fa-cog fa-spin"></i></button>
+		</div>
+	</div>
+	
+	<br>
+	
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<blockquote data-ng-repeat="comment in vm.item.comments track by $index" data-ng-class="$index%2==0 ? '' : 'blockquote-reverse'">
+		  		<p>{{comment.comment}}</p>
+		 		<footer><a data-ng-href="#!/user/{{comment.userId}}">{{comment.username}}</a></footer>
+			</blockquote>
+		</div>
+	</div>
+	
+	
+</div>

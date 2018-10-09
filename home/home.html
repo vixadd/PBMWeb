@@ -1,0 +1,23 @@
+
+  <!-- Stylesheet information -->
+  <link rel="stylesheet" href="./home/home.css"></link>
+<div class="container">
+  <div class="home_view1">
+    <img src="./assets/img/BorrowIt.png"></img>
+  </div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<form data-ng-submit="vm.search(vm.searchString)">
+			  <div class="search">
+					<input type="text" class="form-control" id="search-bar"
+						data-ng-model="vm.searchString" placeholder="Search for an item..."
+						autocomplete="off">
+						
+					<button class="search-button" type="submit"><span class="fa fa-search"></span></button>
+			  </div>
+		  
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,11 @@
+img.item-image{
+	width: 60px;
+	height: 60px;
+	object-fit: cover;
+}
+
+div.info-container{
+	border: 1px solid gray; 
+	border-radius: 5px; 
+	padding: 25px;
+}

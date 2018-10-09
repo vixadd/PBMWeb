@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="./search/search.css"></link>
+
+<div class="container">
+
+  <div class="col-md-6 col-md-offset-3">
+
+    <img src="./assets/img/BorrowIt-bw.png" style="padding:10%; height:65%; width:65%; margin-left:17%"></img>
+    
+    <div class="alert alert-danger text-center" role="alert" data-ng-show="vm.showSignInError">{{vm.errorText}}</div>
+
+    <form  data-ng-submit="vm.submit()">
+		<div class="form-group">
+		  <label for="username-input">Username or Email</label>
+		  <input type="text" class="form-control" id="username-input" placeholder="captain.chris.99@cnu.edu" data-ng-model="vm.username">
+		</div>
+		<div class="form-group">
+		  <label for="password-input">Password</label>
+		  <input type="password" class="form-control" id="password-input" placeholder="GoCaptains!!1" data-ng-model="vm.password">
+		</div>
+		<button type="submit" class="btn btn-primary btn-large btn-block" data-ng-class="vm.submitEnabled ? '' : 'disabled' ">Sign In!</button>
+    </form>
+    
+    <a href="#" class="forgot-password">
+      Forgot your password?
+    </a>
+
+  </div>
+
+</div>

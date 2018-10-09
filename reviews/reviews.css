@@ -1,0 +1,88 @@
+img.item-image{
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+}
+
+.tab-pane{
+	margin-top: 25px;
+}
+
+.list-group-item:hover {
+	cursor: pointer;
+	background-color: #f7f7f7;
+}
+
+.list-group-item:hover .btn-readonly {
+	background-color: #f7f7f7;
+}
+
+.btn-readonly {
+	background: #ffffff;
+	border: 0.5px solid black;
+}
+
+.btn-readonly:hover {
+	color: black;
+	background: #f7f7f7;
+}
+
+.user-link {
+	color: #337ab7;
+}
+
+.list-group-item.active {
+	background-color: #f0f0f0;
+	color: #000000;
+}
+
+.list-group-item.active:hover {
+	background-color: #e7e7e7;
+	color: #000000
+}
+
+.comment-box {
+	position: relative;
+	width: 50%;
+}
+
+/* Rating stars */
+
+fieldset, label { margin: 0; padding: 0; }
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 

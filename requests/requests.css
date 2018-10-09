@@ -1,0 +1,46 @@
+img.item-image{
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+}
+
+.tab-pane{
+	margin-top: 25px;
+}
+
+.btn-link{
+	background: transparent;
+	background-color: transparent;
+	color: #337ab7;
+	text-decoration: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.btn-link:hover{
+	color: darkblue;
+	text-decoration: underline;
+}
+
+.list-group-item:hover {
+	cursor: pointer;
+	background-color: #f7f7f7;
+}
+
+.list-group-item:hover .btn-readonly {
+	background-color: #f7f7f7;
+}
+
+.btn-readonly {
+	background: #ffffff;
+	border: 0.5px solid black;
+}
+
+.btn-readonly:hover {
+	color: black;
+	background: #f7f7f7;
+}
+
+.user-link {
+	color: #337ab7;
+}

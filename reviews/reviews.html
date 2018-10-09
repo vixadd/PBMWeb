@@ -1,0 +1,150 @@
+<link rel="stylesheet" href="./reviews/reviews.css">
+<div class="col-xs-10 col-xs-offset-1">
+	<div class="row text-center page-header">
+		<h1>Reviews</h1>
+	</div>
+	
+	<div class="alert text-center" data-ng-class="vm.error ? 'alert-danger' : 'alert-success' " role="alert" data-ng-show="vm.showAlert">{{vm.alertMessage}}</div>
+	
+	<br data-ng-show="!vm.showAlert">
+	<br data-ng-show="!vm.showAlert">
+	<br data-ng-show="!vm.showAlert">
+	
+	<div class="row">
+		<div class="col-md-7 col-md-push-5">
+			<div data-ng-show="vm.selectedReview !== undefined">
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 well">
+						<form class="form-horizontal" data-ng-submit="vm.updateReview()">
+							<div class="form-group">
+							  <label class="col-sm-6 pull-left">Rate {{vm.selectedReview.recipient}}'s Conduct</label>
+							  <fieldset class="rating col-sm-6 pull-right">
+								    <input type="radio" id="star5" name="rating" value="5" data-ng-model="vm.review.rating"/><label class = "full" for="star5" title="Excellent - 5 stars"></label>
+								    <input type="radio" id="star4half" name="rating" value="4 and a half" data-ng-model="vm.review.rating"/><label class="half" for="star4half" title="Great - 4.5 stars"></label>
+								    <input type="radio" id="star4" name="rating" value="4" data-ng-model="vm.review.rating"/><label class = "full" for="star4" title="Good - 4 stars"></label>
+								    <input type="radio" id="star3half" name="rating" value="3 and a half" data-ng-model="vm.review.rating"/><label class="half" for="star3half" title="Pretty Good - 3.5 stars"></label>
+								    <input type="radio" id="star3" name="rating" value="3" data-ng-model="vm.review.rating"/><label class = "full" for="star3" title="Acceptable - 3 stars"></label>
+								    <input type="radio" id="star2half" name="rating" value="2 and a half" data-ng-model="vm.review.rating"/><label class="half" for="star2half" title="Not Bad - 2.5 stars"></label>
+								    <input type="radio" id="star2" name="rating" value="2" data-ng-model="vm.review.rating"/><label class = "full" for="star2" title="Not Good - 2 stars"></label>
+								    <input type="radio" id="star1half" name="rating" value="1 and a half" data-ng-model="vm.review.rating"/><label class="half" for="star1half" title="Pretty Bad - 1.5 stars"></label>
+								    <input type="radio" id="star1" name="rating" value="1" data-ng-model="vm.review.rating"/><label class = "full" for="star1" title="Awful - 1 star"></label>
+								    <input type="radio" id="starhalf" name="rating" value="half" data-ng-model="vm.review.rating"/><label class="half" for="starhalf" title="The Worst - 0.5 stars"></label>
+								</fieldset>
+							</div>
+							<div class="form-group" data-ng-show="vm.selectedReview.reviewType === 'LEND'">
+								<label class="col-sm-6 pull-left">Leave a comment about the item</label>
+								<textarea class="form-control comment-box" rows="5" data-ng-model="vm.review.comment"></textarea>
+							</div>
+							<button class="btn btn-success btn-lg btn-block" data-ng-class="vm.submitDisabled ? 'disabled' : '' " type="submit">{{vm.submitting ? 'Submitting' : 'Submit' }} <i class="fa fa-cog fa-spin" data-ng-show="vm.submitting"></i></button>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+		
+		<div class="col-md-5 col-md-pull-7">
+			<h3>Select a Review!</h3>
+			<br>
+		  <ul class="nav nav-tabs" role="tablist">
+		    <li role="presentation" class="active"><a href="#borrowReviews" target="_self" role="tab" data-toggle="tab">Borrower Reviews | <span class="badge">{{vm.borrowReviews.length}}</span></a></li>
+		    <li role="presentation"><a href="#lendReviews" target="_self" role="tab" data-toggle="tab">Lender Reviews | <span class="badge">{{vm.lendReviews.length}}</span></a></li>
+		  </ul>
+		
+		  <div class="tab-content">
+		    <div role="tabpanel" class="tab-pane active" id="borrowReviews">
+		    	<div class="row">
+		    		<div class="col-xs-12">
+		    			<div class="well text-center" data-ng-show="vm.borrowReviews.length == 0">
+		    				<h2>Nothing Here :(</h2>
+		    				<h4>You're all caught up!</h4>
+		    			</div>
+		    		
+				    	<div class="list-group">
+							<div class="list-group-item"
+								data-ng-repeat="review in vm.borrowReviews"
+								data-ng-click="vm.reviewSelected(review)"
+								data-ng-class="vm.selectedReview === review ? 'active' : '' ">
+									<div class="row">
+										<div class="col-xs-2">
+											<img class="img img-responsive img-thumbnail item-image" data-ng-src="{{review.itemImage}}" />
+										</div>
+										<div class="col-xs-10">
+											<div class="row">
+												<div class="col-xs-8">
+													<h4><a data-ng-click="vm.goToItemPage(review.ItemId, $event)">{{review.itemTitle}}</a></h4>
+												</div>
+												<div class="col-xs-4">
+													<h4 class="pull-right"><small class="text-info">Borrowed for {{review.borrowDuration | millSecondsToTimeString}}</small>
+													</h4>
+												</div>
+											</div>
+											
+											<div class="row">
+												<div class="col-xs-12 text-center">
+													<p class="pull-left">Borrower: <a class="user-link" data-ng-click="vm.goToUserPage(review.recipient, $event)">{{review.recipient}}</a></p>
+												</div>
+											</div>
+										</div>
+									</div>	
+										
+							</div>
+						</div>
+					</div>
+				</div>
+		    </div>
+		    
+		    
+		    <div role="tabpanel" class="tab-pane" id="lendReviews">
+		    	<div class="row">
+		    		<div class="col-xs-12">
+		    			<div class="well text-center" data-ng-show="vm.lendReviews.length == 0">
+		    				<h2>Nothing Here :(</h2>
+		    				<h4>You're all caught up!</h4>
+		    			</div>
+		    		
+				    	<div class="list-group">
+							<div class="list-group-item"
+								data-ng-repeat="review in vm.lendReviews"
+								data-ng-click="vm.reviewSelected(review)"
+								data-ng-class="vm.selectedReview === review ? 'active' : '' ">
+									<div class="row">
+										<div class="col-xs-2">
+											<img class="img img-responsive img-thumbnail item-image" data-ng-src="{{review.itemImage}}" />
+										</div>
+										<div class="col-xs-10">
+											<div class="row">
+												<div class="col-xs-8">
+													<h4><a data-ng-click="vm.goToItemPage(review.ItemId, $event)">{{review.itemTitle}}</a></h4>
+												</div>
+												<div class="col-xs-4">
+													<h4 class="pull-right"><small class="text-info">Borrowed for {{review.borrowDuration | millSecondsToTimeString}}</small>
+													</h4>
+												</div>
+											</div>
+											
+											<div class="row">
+												<div class="col-xs-12 text-center">
+													<p class="pull-left">Lender: <a class="user-link" data-ng-click="vm.goToUserPage(review.recipient, $event)">{{review.recipient}}</a></p>
+												</div>
+											</div>
+										</div>
+									</div>	
+										
+							</div>
+						</div>
+					</div>
+				</div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+</div>
