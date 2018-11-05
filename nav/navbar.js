@@ -1,4 +1,4 @@
-angular.module('BorrowIt')
+angular.module('PBMWeb')
 .component('navbar', {
 	templateUrl: './nav/navbar.html',
 	controller: 'NavController',

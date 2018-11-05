@@ -2,7 +2,7 @@
  * Angular Module controller for the home page
  * on the application.
  */
-angular.module('BorrowIt')
+angular.module('PBMWeb')
 .config(['$routeProvider', function($routeProvider) {
 	$routeProvider
 	.when('/', {
