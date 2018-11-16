@@ -4,6 +4,7 @@ angular.module('PBMWeb')
 	controller: 'NavController',
 	controllerAs: 'vm'
 })
+
 .controller('NavController', [ '$location', function($location){
 	var vm = this;
 }]);

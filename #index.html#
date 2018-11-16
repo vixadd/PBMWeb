@@ -35,9 +35,9 @@
 	</div>
 	
 	<!-- Stuff our application needs. -->
-	<script type="text/javascript" src="./app.js"></script> <!--
+	<script type="text/javascript" src="./app.js"></script>
 	<script type="text/javascript" src="./home/home.js"></script>
-	<script type="text/javascript" src="./nav/navbar.js"></script> -->
+	<script type="text/javascript" src="./nav/navbar.js"></script>
 		
 	<!-- API Gateway Dependencies (WHY?!?!?)
 	<script type="text/javascript" src="/vendor/aws/apiGateway-js-sdk/lib/axios/dist/axios.standalone.js"></script>
