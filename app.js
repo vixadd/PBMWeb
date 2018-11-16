@@ -9,9 +9,9 @@
 angular.module("PBMWeb", ['ngRoute'])
 
     // Configure the application with the routing system.
-    .config(['$routeProvider', '$locationProvider'],
+    .config(['$routeProvider', '$locationProvider',
 	    function($routeProvider, $locationProvider) {
 
 		$routeProvider.otherwise({ redirect: "/"});
 
-	    });
+	    }]);
